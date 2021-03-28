@@ -1,1 +1,88 @@
-../../Makefile-swat
+#flags=-O2
+flags = -O3 -pg
+swatplus: animal_herd_module.o aqu_pesticide_module.o aquifer_module.o basin_module.o calibration_data_module.o \
+	carbon_module.o ch_pathogen_module.o constituent_mass_module.o ch_pesticide_module.o channel_data_module.o \
+	channel_module.o channel_velocity_module.o climate_module.o conditional_module.o dr_module.o \
+	exco_module.o fertilizer_data_module.o hru_lte_module.o hru_module.o time_module.o hydrograph_module.o \
+	hydrology_data_module.o input_file_module.o landuse_data_module.o maximum_data_module.o \
+	mgt_operations_module.o organic_mineral_mass_module.o output_landscape_module.o \
+	output_ls_pathogen_module.o output_ls_pesticide_module.o output_ls_salt_module.o pathogen_data_module.o \
+	pesticide_data_module.o plant_data_module.o plant_module.o recall_module.o res_pesticide_module.o \
+	reservoir_data_module.o reservoir_module.o ru_module.o salt_data_module.o sd_channel_module.o \
+	septic_data_module.o soil_data_module.o soil_module.o tiles_data_module.o tillage_data_module.o \
+	topography_data_module.o urban_data_module.o water_body_module.o wind_data_module.o \
+	basin_sw_init.o cal_parmchg_read.o calhard_control.o calsoft_control.o \
+	command.o dr_db_read.o dr_ru.o dtbl_flocon_read.o \
+	dtbl_lum_read.o dtbl_res_read.o dtbl_scen_read.o exco_db_read.o \
+	hru_dtbl_actions_init.o hyd_connect.o hyd_connect_out.o \
+	object_read_output.o om_water_init.o \
+	path_cha_res_read.o pest_cha_res_read.o proc_allo.o proc_bsn.o proc_cal.o proc_cha.o proc_cond.o \
+	proc_date_time.o proc_db.o proc_hru.o proc_open.o proc_read.o proc_res.o salt_cha_res_read.o \
+	time_control.o unit_hyd.o water_rights_read.o wet_initial.o wet_read.o wet_read_hyd.o \
+	actions.o aqu2d_init.o aqu2d_read.o aqu_1d_control.o aqu_initial.o aqu_pesticide_output.o aqu_read.o \
+	aqu_read_elements.o aqu_read_init.o aquifer_output.o basin_aqu_pest_output.o basin_aquifer_output.o \
+	basin_ch_pest_output.o basin_chanmorph_output.o basin_channel_output.o basin_ls_pest_output.o \
+	basin_output.o basin_print_codes_read.o basin_prm_default.o basin_read_cc.o basin_read_objs.o \
+	basin_read_prm.o basin_recall_output.o basin_res_pest_output.o basin_reservoir_output.o \
+	basin_sdchannel_output.o cal_allo_init.o cal_cond_read.o cal_conditions.o cal_parm_read.o \
+	calsoft_ave_output.o calsoft_chsed.o calsoft_hyd.o calsoft_plant.o calsoft_read_codes.o calsoft_sed.o \
+	calsoft_sum_output.o caltsoft_hyd.o ch_initial.o ch_read.o ch_read_elements.o ch_read_hyd.o \
+	ch_read_init.o ch_read_nut.o ch_read_orders_cal.o ch_read_parms_cal.o ch_read_sed.o ch_ttcoef.o \
+	cha_pesticide_output.o channel_allo.o channel_control.o channel_output.o channel_surf_link.o \
+	cli_atmodep_time_control.o cli_hmeas.o cli_pmeas.o cli_precip_control.o cli_read_atmodep.o cli_smeas.o \
+	cli_staread.o cli_tmeas.o cli_wgnread.o cli_wmeas.o climate_control.o cntbl_read.o conditions.o \
+	cons_prac_read.o constit_db_read.o constit_hyd_mult.o define_unit_elements.o \
+	dr_read_hmet.o dr_read_om.o dr_read_pest.o dr_read_salt.o exco_read_hmet.o exco_read_om.o \
+	exco_read_path.o exco_read_pest.o exco_read_salt.o fert_parm_read.o field_read.o flow_dur_curve.o \
+	header_aquifer.o header_channel.o header_hyd.o header_mgt.o header_path.o header_pest.o \
+	header_reservoir.o header_sd_channel.o header_snutc.o header_wetland.o header_write.o header_yield.o \
+	hmet_hru_aqu_read.o hru_allo.o hru_control.o hru_lte_control.o \
+	hru_lte_output.o hru_lte_read.o hru_output.o hru_output_allo.o hru_pathogen_output.o \
+	hru_pesticide_output.o hru_read.o hrudb_init.o \
+	hyd_read_connect.o hyddep_output.o hydin_output.o hydout_output.o hydro_init.o hydrol_read.o \
+	landuse_read.o lcu_read_softcal.o ls_link.o lsu_output.o lsu_read_elements.o \
+	mgt_newtillmix.o mgt_read_chemapp.o mgt_read_fireops.o mgt_read_grazeops.o mgt_read_harvops.o \
+	mgt_read_irrops.o mgt_read_mgtops.o mgt_read_sweepops.o obj_output.o output_landscape_init.o \
+	overbank_read.o overland_n_read.o path_hru_aqu_read.o path_parm_read.o pathogen_init.o \
+	pest_hru_aqu_read.o pest_parm_read.o pesticide_init.o pl_read_parms_cal.o pl_read_regions_cal.o \
+	plant_all_init.o plant_parm_read.o plantparm_init.o re_initialize.o readcio_read.o readpcom.o \
+	readtime_read.o rec_read_elements.o recall_output.o recall_read.o res_allo.o res_control.o res_initial.o \
+	res_objects.o res_pesticide_output.o res_read.o res_read_elements.o res_read_hyd.o res_read_init.o \
+	res_read_nut.o res_read_sed.o res_read_weir.o reservoir_output.o rte_read_nut.o ru_allo.o ru_control.o \
+	ru_output.o ru_read.o ru_read_elements.o salt_hru_aqu_read.o salt_hru_init.o scen_read_bmpuser.o \
+	scen_read_filtstrip.o scen_read_grwway.o sd_chanmorph_output.o sd_channel_control.o sd_channel_output.o \
+	sd_channel_read.o sd_hydsed_init.o sd_hydsed_read.o sdr_read.o sep_read.o septic_parm_read.o \
+	sim_initday.o sim_inityr.o snowdb_read.o soil_db_read.o soil_lte_db_read.o soil_nutcarb_output.o \
+	soil_plant_init.o soils_init.o soiltest_all_init.o solt_db_read.o till_parm_read.o \
+	time_conc_init.o topo_read.o topohyd_init.o urban_parm_read.o wetland_output.o xmon.o \
+	albedo.o allocate_parms.o ascrv.o atri.o aunif.o cal_parm_select.o cbn_zhang2.o ch_rchinit.o ch_rchuse.o \
+	ch_rtday.o ch_rthsed.o ch_rtmusk.o ch_rtout.o ch_rtpath.o ch_rtpest.o ch_rtsed.o ch_rtsed_bagnold.o \
+	ch_rtsed_kodatie.o ch_rtsed_yangsand.o ch_watqual3.o ch_watqual4.o chg_par.o \
+	cli_bounds_check.o cli_clgen.o cli_initwgn.o cli_pgen.o cli_pgenhr.o cli_rhgen.o cli_slrgen.o cli_tgen.o \
+	cli_weatgn.o cli_wndgen.o curno.o et_act.o et_pot.o expo.o gcycl.o hru_hyds.o \
+	hru_urb_bmp.o hru_urban.o hru_urbanhr.o layersplit.o mgt_harvbiomass.o \
+	mgt_harvgrain.o mgt_harvtuber.o mgt_killop.o mgt_operatn.o mgt_tillfactor.o nut_nitvol.o nut_nlch.o \
+	nut_nminrl.o nut_nrain.o nut_orgn.o nut_orgnc2.o nut_orgnc.o nut_pminrl2.o nut_pminrl.o nut_psed.o \
+	nut_solp.o path_ls_process.o path_ls_runoff.o path_ls_swrouting.o pest_apply.o pest_decay.o pest_enrsb.o \
+	pest_lch.o pest_pesty.o pest_soil_tot.o pest_washp.o pl_burnop.o pl_community.o pl_fert.o pl_graze.o \
+	pl_grow.o pl_moisture_gro_init.o pl_moisture_senes_init.o plant_init.o qman.o read_mgtops.o res_hydro.o \
+	res_nutrient.o res_pest.o res_sediment.o rls_routesoil.o rls_routesurf.o rls_routetile.o \
+	sd_channel_surf_link.o search.o sep_biozone.o smp_bmpfixed.o smp_buffer.o smp_filter.o smp_grass_wway.o \
+	soil_nutcarb_init.o soil_nutcarb_write.o soil_phys_init.o soiltest_init.o stmp_solt.o stor_surfstor.o \
+	surface.o swr_latsed.o swr_percmain.o swr_substor.o swr_subwq.o varinit.o wetland_control.o \
+	cli_dstn1.o ee.o ero_cfactor.o ero_eiusle.o ero_ovrsed.o ero_pkq.o \
+	ero_ysed.o fcgd.o hru_sweep.o jdt.o mgt_sched.o nut_denit.o nut_np_flow.o \
+	pl_biomass_gro.o pl_dormant.o pl_leaf_gro.o pl_leaf_senes.o pl_mortality.o pl_nut_demand.o pl_partition.o \
+	pl_root_gro.o pl_rootfr.o pl_seed_gro.o pl_waterup.o regres.o soil_awc_init.o soil_text_init.o \
+	sq_canopyint.o sq_crackflow.o sq_crackvol.o sq_dailycn.o sq_snom.o sq_surfst.o sq_volq.o \
+	structure_set_parms.o swr_drains.o swr_origtile.o swr_percmacro.o swr_percmicro.o swr_satexcess.o theta.o \
+	zero0.o zero1.o zero2.o zeroini.o ch_rtsed_Molinas_Wu.o dr_read_path.o ls_read_parms_cal.o \
+	pl_nup.o pl_nupd.o nuts.o pl_nfix.o pl_pup.o pl_pupd.o pl_tstr.o sq_daycn.o sq_greenampt.o \
+	swr_depstor.o ttcoef_wway.o ch_watqual_semi_analitical_function.o \
+	flow_hyd_ru_hru.o time_read.o proc_aqu.o unit_hyd_ru_hru.o \
+	main.o
+	gfortran $(flags) $^ -o $@
+%.o: %.f90
+	gfortran $(flags) -c -ffree-line-length-none $^
+clean:
+	@/bin/rm -rf *.o *.mod swatplus
